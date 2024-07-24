@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id= "@+id/img_slider"
         android:background="@mipmap/ic_launcher"
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -238,9 +239,28 @@
     </ScrollView>
 
 <LinearLayout
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="0.3"
-    android:background="#e21818"
-    ></LinearLayout>
+    android:background="#e21818">
+    <Button
+        android:id="@+id/btn_contact"
+        android:text="خانه"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:text="خانه"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_home"
+        android:text="خانه"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+    
+</LinearLayout>
 </LinearLayout>
