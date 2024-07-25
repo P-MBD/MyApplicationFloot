@@ -28,10 +28,12 @@
                 android:orientation="vertical"
                 >
                 <TextView
+                    android:layout_marginRight="@dimen/margin_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="برترین برنامه ها"/>
+                    android:textSize="@dimen/title_bar"
+                    android:text="@string/best_apps"/>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -49,6 +51,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -66,6 +69,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -84,6 +88,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -95,10 +100,12 @@
                 </LinearLayout>
 
                 <TextView
+                    android:textSize="@dimen/title_bar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="پر فروش ترین برنامه ها"/>
+                    android:layout_marginRight="@dimen/margin_5"
+                    android:text="@string/best_sellers"/>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -116,6 +123,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -133,6 +141,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -151,6 +160,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -162,10 +172,8 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="جدیدترین رایگانی ها"/>
+                    style="@style/text_style"
+                    android:text="@string/new_free_apps"/>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -183,6 +191,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -200,6 +209,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -218,6 +228,7 @@
                             android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
+                            android:textSize="@dimen/app_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -230,7 +241,7 @@
 
             </LinearLayout>
             <LinearLayout
-                android:background="#e21818"
+                android:background="@color/red"
                 android:layout_weight="0.3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -246,18 +257,18 @@
     android:background="#e21818">
     <Button
         android:id="@+id/btn_contact"
-        android:text="خانه"
+        android:text="@string/contact_menu"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
     <Button
-        android:text="خانه"
+        android:text="@string/updates_app"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btn_home"
-        android:text="خانه"
+        android:text="@string/home_menu"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />

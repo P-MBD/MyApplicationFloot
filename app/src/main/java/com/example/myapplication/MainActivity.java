@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.e("LifeCycle Main","on click for test");
-                Toast.makeText(getApplicationContext(),"Hi android", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.contact_message), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
                 startActivity(intent);
             }
