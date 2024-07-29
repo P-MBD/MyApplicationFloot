@@ -12,5 +12,12 @@
     <string name="send_sms">ارسال پیامک </string>
     <string name="exit_title">خروج </string>
     <string name="search_menu">جستجو</string>
-    <string name="search">وب سایت</string>
+    <string name="website">وب سایت</string>
+    <string name="setting_menu">تنظیمات</string>
+    <string name="telegram">تلگرام ما</string>
+    <string name="register_user">ثبت نام</string>
+    <string name="login_user">ورود کاربران</string>
+    <string name="open">open</string>
+    <string name="close">close </string>
+
 </resources>
