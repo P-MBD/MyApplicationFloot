@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:textColor="@color/white"
+    android:textSize="@dimen/title_bar"
+    android:gravity="center"
+    android:text="@string/login_form"
+    android:background="@color/orange_600"
+    android:layout_width="match_parent"
+    android:layout_height="60dp" />
+
+ <EditText
+     android:drawableRight="@drawable/ic_person_black_24dp"
+     android:id="@+id/edt_userName"
+     android:hint="@string/hint_user"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" />
+
+
+ <EditText
+     android:inputType="textPassword"
+     android:drawableRight="@drawable/ic_lock_outline_black_24dp"
+     android:id="@+id/edt_password"
+     android:hint="@string/hint_password"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" />
+    
+ <CheckBox
+     android:text="@string/save_pass"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content" />
+<View
+    android:background="@color/blue_900"
+    android:layout_width="match_parent"
+    android:layout_height="2dp"/>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+  <Button
+      android:id="@+id/btn_login"
+      android:text="@string/login_user"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content" />
+
+ <Button
+     android:text="@string/cancel"
+     android:layout_weight="1"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content" />
+
+</LinearLayout>
+</LinearLayout>

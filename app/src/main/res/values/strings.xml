@@ -19,5 +19,13 @@
     <string name="login_user">ورود کاربران</string>
     <string name="open">open</string>
     <string name="close">close </string>
+    <string name="exit_message">آیا واقعا میخوای ما رو تنها بزاری ؟</string>
+    <string name="yes">اره بابا کشتی منو</string>
+    <string name="no">نه.میمونم</string>
+    <string name="login_form">ورود کاربران </string>
+    <string name="hint_user">نام را وارد کنید </string>
+    <string name="hint_password">رمز را وارد کنید </string>
+    <string name="cancel">انصراف</string>
+    <string name="save_pass">ذخیره سازی</string>
 
 </resources>

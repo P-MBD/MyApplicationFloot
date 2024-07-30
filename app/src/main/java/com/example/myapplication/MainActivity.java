@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 
 import com.example.myapplication.activity.ContactActivity;
+import com.example.myapplication.uiDesign.DialogManager;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 if(id==R.id.item_telegram) {
                     Intent intent_m = new Intent(Intent.ACTION_VIEW, Uri.parse("http://telegram.me/p30droid"));
                     startActivity(intent_m);
+                }else{
+                    DialogManager.loginUI(MainActivity.this);
                 }
 
                 return false;
@@ -121,6 +124,27 @@ public class MainActivity extends AppCompatActivity {
             Intent intent_m = new Intent(Intent.ACTION_VIEW, Uri.parse("http://telegram.me/p30droid"));
             startActivity(intent_m);
         } else if (id==R.id.item_exit) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+            alert.setTitle(getResources().getString(R.string.exit_title));
+            alert.setMessage(getResources().getString(R.string.exit_message));
+            alert.setIcon(android.R.drawable.ic_menu_delete);
+            alert.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    finish();
+
+                }
+            });
+
+            alert.setNeutralButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+
+            alert.show();
 
         }
 //        else if(R.id.item_contact){
