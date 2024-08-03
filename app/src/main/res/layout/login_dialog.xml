@@ -55,4 +55,12 @@
      android:layout_height="wrap_content" />
 
 </LinearLayout>
+
+    <Button
+        android:text="@string/register_user"
+        android:id="@+id/btn_register"
+        android:background="@drawable/btn_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

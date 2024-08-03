@@ -28,4 +28,7 @@
     <string name="cancel">انصراف</string>
     <string name="save_pass">ذخیره سازی</string>
 
+    <string name="success_register">ثبت نام انجام شد حله</string>
+
+    <string name="success_fail">نشد دیگه..دوباره بزن</string>
 </resources>
