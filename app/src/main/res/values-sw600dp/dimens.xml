@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="app_title">16sp</dimen>
+    <dimen name="title_bar">24sp</dimen>
+
+    <dimen name="margin_5">15dp</dimen>
+    <dimen name="margin_15">20dp</dimen>
+    <dimen name="margin_10">15dp</dimen>
+
+
+    <dimen name="height">144dp</dimen>
+    <dimen name="width">144dp</dimen>
+
+</resources>
