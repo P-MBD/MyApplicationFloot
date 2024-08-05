@@ -48,8 +48,8 @@
                         android:layout_height="wrap_content">
                         <ImageView
                             android:background="@mipmap/ic_launcher"
-                            android:layout_width="@dimen/width"
-                            android:layout_height="@dimen/height" />
+                            android:layout_width="96dp"
+                            android:layout_height="96dp" />
                         <TextView
                             android:text="دیجی کالا"
                             android:textSize="@dimen/app_title"
@@ -269,7 +269,7 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
-    
+
 </LinearLayout>
 </LinearLayout>
 <com.google.android.material.navigation.NavigationView

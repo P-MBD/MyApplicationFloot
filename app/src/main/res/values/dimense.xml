@@ -5,4 +5,7 @@
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_10">10dp</dimen>
     <dimen name="margin_15">15dp</dimen>
+
+    <dimen name="height">96dp</dimen>
+    <dimen name="width">96dp</dimen>
 </resources>

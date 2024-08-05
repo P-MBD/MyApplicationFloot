@@ -20,11 +20,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
 import com.example.myapplication.activity.ContactActivity;
+import com.example.myapplication.adapter.BestProductsAdapter;
+import com.example.myapplication.dataProvider.DataManager;
 import com.example.myapplication.database.FlootDatabaseHelper;
 import com.example.myapplication.uiDesign.DialogManager;
 import com.google.android.material.navigation.NavigationView;
@@ -35,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     NavigationView navigation_slider;
     DrawerLayout drawer;
-
+    GridView grid_best_products;
+    DataManager dataManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         navigation_slider = (NavigationView) findViewById(R.id.navigation_slider);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
+        grid_best_products = (GridView)findViewById(R.id.grid_best_product);
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         });
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(MainActivity.this, drawer, toolbar, R.string.open, R.string.close);
         toggle.syncState();
+        dataManager = new DataManager();
+        BestProductsAdapter adapter = new BestProductsAdapter(getApplicationContext(),dataManager.getBestProducts());
+        grid_best_products.setAdapter(adapter);
     }
 
     @Override
