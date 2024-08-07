@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -22,28 +25,39 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
 import com.example.myapplication.activity.ContactActivity;
 import com.example.myapplication.adapter.BestProductsAdapter;
+import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
 import com.example.myapplication.database.FlootDatabaseHelper;
+import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.uiDesign.DialogManager;
 import com.google.android.material.navigation.NavigationView;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
     ImageView imageSlider;
+
     Button btn_home, btn_contact;
     Toolbar toolbar;
     NavigationView navigation_slider;
     DrawerLayout drawer;
     GridView grid_best_products;
     DataManager dataManager;
+
+    RecyclerView recycler_best_sellers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         FlootDatabaseHelper flootDatabaseHelper = new FlootDatabaseHelper(getApplicationContext());
         Log.e("LifeCycle Main", "OnCreate");
         imageSlider = (ImageView) findViewById(R.id.img_slider);
@@ -53,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         navigation_slider = (NavigationView) findViewById(R.id.navigation_slider);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
-        grid_best_products = (GridView)findViewById(R.id.grid_best_product);
+        grid_best_products = (GridView) findViewById(R.id.grid_best_product);
+        recycler_best_sellers = (RecyclerView) findViewById(R.id.recycler_best_sellers);
+
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 int id = item.getItemId();
-                if(id==R.id.item_telegram) {
+                if (id == R.id.item_telegram) {
                     Intent intent_m = new Intent(Intent.ACTION_VIEW, Uri.parse("http://telegram.me/p30droid"));
                     startActivity(intent_m);
-                }else{
+                } else {
                     DialogManager.loginUI(MainActivity.this);
                 }
 
@@ -81,9 +97,18 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(MainActivity.this, drawer, toolbar, R.string.open, R.string.close);
         toggle.syncState();
         dataManager = new DataManager();
-        BestProductsAdapter adapter = new BestProductsAdapter(getApplicationContext(),dataManager.getBestProducts());
+        BestProductsAdapter adapter = new BestProductsAdapter(getApplicationContext(), dataManager.getBestProducts());
         grid_best_products.setAdapter(adapter);
+
+        ProductAdapter productAdapter = new ProductAdapter(getApplicationContext(), dataManager.getNewProducts());
+        recycler_best_sellers.setAdapter(productAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        recycler_best_sellers.setLayoutManager(layoutManager);
+
+
+
     }
+
 
     @Override
     protected void onPause() {
