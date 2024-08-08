@@ -105,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recycler_best_sellers.setLayoutManager(layoutManager);
 
-
-
     }
 
 
