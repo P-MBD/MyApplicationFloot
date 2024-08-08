@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +46,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder_Mohammadi holder, int position) {
         Product product = productList.get(position);
-        //holder.binding.imgApp
+
+        Typeface typeface=Typeface.createFromAsset(context.getAssets(),"fonts/BYekan.ttf");
+        holder.binding.txtTitle.setTypeface(typeface);
+
         holder.binding.txtTitle.setText(product.getTitle());
-        Picasso.with(context).load(product.getIcon()).error(R.mipmap.ic_launcher).into(holder.binding.imgApp);
+        Picasso.with(context).load(product.getIcon()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder.binding.imgApp);
     }
 
     @Override
