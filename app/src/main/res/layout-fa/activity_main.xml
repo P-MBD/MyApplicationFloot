@@ -252,23 +252,7 @@
     android:layout_height="0dp"
     android:layout_weight="0.3"
     android:background="#e21818">
-    <Button
-        android:id="@+id/btn_contact"
-        android:text="@string/contact_menu"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="@string/updates_app"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_home"
-        android:text="@string/home_menu"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+
 
 </LinearLayout>
 </LinearLayout>

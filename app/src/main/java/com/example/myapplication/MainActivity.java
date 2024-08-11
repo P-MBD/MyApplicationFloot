@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,7 +36,11 @@ import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
 import com.example.myapplication.database.FlootDatabaseHelper;
 import com.example.myapplication.databinding.ActivityMainBinding;
+import com.example.myapplication.fragment.CategoriesFragment;
+import com.example.myapplication.fragment.HomeFragment;
+import com.example.myapplication.fragment.UpdatesAppFragment;
 import com.example.myapplication.uiDesign.DialogManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -44,14 +49,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     ImageView imageSlider;
 
-    Button btn_home, btn_contact;
+
     Toolbar toolbar;
     NavigationView navigation_slider;
     DrawerLayout drawer;
-    GridView grid_best_products;
-    DataManager dataManager;
-
-    RecyclerView recycler_best_sellers;
+    BottomNavigationView bottom_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,24 +63,13 @@ public class MainActivity extends AppCompatActivity {
         FlootDatabaseHelper flootDatabaseHelper = new FlootDatabaseHelper(getApplicationContext());
         Log.e("LifeCycle Main", "OnCreate");
         imageSlider = (ImageView) findViewById(R.id.img_slider);
-        btn_home = (Button) findViewById(R.id.btn_home);
-        btn_contact = (Button) findViewById(R.id.btn_contact);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigation_slider = (NavigationView) findViewById(R.id.navigation_slider);
         drawer = (DrawerLayout) findViewById(R.id.drawer);
-        grid_best_products = (GridView) findViewById(R.id.grid_best_product);
-        recycler_best_sellers = (RecyclerView) findViewById(R.id.recycler_best_sellers);
+        bottom_menu = (BottomNavigationView) findViewById(R.id.bottom_menu);
 
-        btn_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("LifeCycle Main", "on click for test");
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.contact_message), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
-                startActivity(intent);
-            }
-        });
+
         navigation_slider.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -96,14 +87,26 @@ public class MainActivity extends AppCompatActivity {
         });
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(MainActivity.this, drawer, toolbar, R.string.open, R.string.close);
         toggle.syncState();
-        dataManager = new DataManager();
-        BestProductsAdapter adapter = new BestProductsAdapter(getApplicationContext(), dataManager.getBestProducts());
-        grid_best_products.setAdapter(adapter);
 
-        ProductAdapter productAdapter = new ProductAdapter(getApplicationContext(), dataManager.getNewProducts());
-        recycler_best_sellers.setAdapter(productAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        recycler_best_sellers.setLayoutManager(layoutManager);
+
+        bottom_menu.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.item_home) {
+                fragment = new HomeFragment();
+            } else if (itemId == R.id.item_updates) {
+                fragment = new UpdatesAppFragment();
+            } else if (itemId == R.id.item_categories) {
+                fragment = new CategoriesFragment();
+            }
+
+            if (fragment != null) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+            }
+
+            return true;
+        });
 
     }
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment">
+
+    <ImageView
+        android:id= "@+id/img_slider"
+        android:background="@mipmap/ic_launcher"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/best_apps"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <GridView
+                        android:numColumns="3"
+                        android:id="@+id/grid_best_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/best_sellers"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_best_sellers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <TextView
+                    style="@style/text_style"
+                    android:text="@string/new_free_apps"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/red"
+                android:layout_weight="0.3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

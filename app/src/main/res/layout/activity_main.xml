@@ -6,107 +6,59 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-    <include layout="@layout/toolbar_layout" />
-    <ImageView
-        android:id= "@+id/img_slider"
-        android:background="@mipmap/ic_launcher"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
+        android:orientation="vertical">
+
+
+        <include layout="@layout/toolbar_layout" />
+
+        <!--
+                <fragment
+                    android:id="@+id/fragment"
+                    android:name="com.floot.fragment.HomeFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3" />-->
+
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-            <LinearLayout
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-                <TextView
-                    style="@style/text_style"
-                    android:text="@string/best_apps"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <GridView
-                        android:numColumns="3"
-                        android:id="@+id/grid_best_product"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <TextView
-                    style="@style/text_style"
-                    android:text="@string/best_sellers"/>
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_best_sellers"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                        </androidx.recyclerview.widget.RecyclerView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <TextView
-                    style="@style/text_style"
-                    android:text="@string/new_free_apps"/>
+                android:id="@+id/bottom_menu"
+                app:menu="@menu/bottom_menu"
+                android:background="?android:attr/windowBackground"
+                app:itemBackground="@color/bgBottomNavigation"
+                android:foreground="?attr/selectableItemBackground"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white"
+                android:layout_height="wrap_content"></com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-            </LinearLayout>
-            <LinearLayout
-                android:background="@color/red"
-                android:layout_weight="0.3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                />
         </LinearLayout>
-    </ScrollView>
 
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.3"
-    android:background="#e21818">
-    <Button
-        android:id="@+id/btn_contact"
-        android:text="@string/contact_menu"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:text="@string/updates_app"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn_home"
-        android:text="@string/home_menu"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-    
-</LinearLayout>
-</LinearLayout>
-<com.google.android.material.navigation.NavigationView
-    android:id="@+id/navigation_slider"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    app:headerLayout="@layout/header_layout"
-    app:menu="@menu/slide_menu"
-    />
+    </LinearLayout><!---->
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_layout"
+        app:menu="@menu/slide_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
