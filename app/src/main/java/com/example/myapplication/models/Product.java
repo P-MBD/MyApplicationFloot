@@ -1,19 +1,75 @@
 package com.example.myapplication.models;
 
-public class Product {
-     int id;
-     int catId;
-     String title;
-     String icon;
-     String shortDescription;
-     String fullDescription;
-     String price;
-    float rate;
-    int versionCode;
-    String versionName;
-    String packageName;
-    String bulk;
-    String downloadLink;
+import android.os.Parcel;
+import android.os.Parcelable;
+public class Product implements Parcelable {
+
+    private int id;
+    private int catId;
+    private String title;
+    private String icon;
+    private String shortDescription;
+    private String fullDescription;
+    private String price;
+    private float rate;
+    private int versionCode;
+    private String versionName;
+    private String packageName;
+    private String bulk;
+    private String downloadLink;
+
+    public Product(){}
+
+
+    protected Product(Parcel in) {
+        id = in.readInt();
+        catId = in.readInt();
+        title = in.readString();
+        icon = in.readString();
+        shortDescription = in.readString();
+        fullDescription = in.readString();
+        price = in.readString();
+        rate = in.readFloat();
+        versionCode = in.readInt();
+        versionName = in.readString();
+        packageName = in.readString();
+        bulk = in.readString();
+        downloadLink = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(catId);
+        dest.writeString(title);
+        dest.writeString(icon);
+        dest.writeString(shortDescription);
+        dest.writeString(fullDescription);
+        dest.writeString(price);
+        dest.writeFloat(rate);
+        dest.writeInt(versionCode);
+        dest.writeString(versionName);
+        dest.writeString(packageName);
+        dest.writeString(bulk);
+        dest.writeString(downloadLink);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -118,6 +174,4 @@ public class Product {
     public void setDownloadLink(String downloadLink) {
         this.downloadLink = downloadLink;
     }
-
-
 }
