@@ -47,7 +47,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    ImageView imageSlider;
+   // ImageView imageSlider;
 
 
     Toolbar toolbar;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         FlootDatabaseHelper flootDatabaseHelper = new FlootDatabaseHelper(getApplicationContext());
         Log.e("LifeCycle Main", "OnCreate");
-        imageSlider = (ImageView) findViewById(R.id.img_slider);
+        //imageSlider = (ImageView) findViewById(R.id.img_slider);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         navigation_slider = (NavigationView) findViewById(R.id.navigation_slider);

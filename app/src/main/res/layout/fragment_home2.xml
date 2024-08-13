@@ -26,9 +26,23 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 >
-                <TextView
-                    style="@style/text_style"
-                    android:text="@string/best_apps"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <com.example.myapplication.customView.PersianTextView
+                        style="@style/text_style"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/best_apps"/>
+                    <com.example.myapplication.customView.AwesomeView
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:text="@string/fa_heart"
+                        android:textColor="@color/red_700"
+                        android:textSize="@dimen/app_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -43,7 +57,7 @@
 
                 </LinearLayout>
 
-                <TextView
+                <com.example.myapplication.customView.PersianTextView
                     style="@style/text_style"
                     android:text="@string/best_sellers"/>
 
@@ -59,7 +73,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-                <TextView
+                <com.example.myapplication.customView.PersianTextView
                     style="@style/text_style"
                     android:text="@string/new_free_apps"/>
                 <LinearLayout
