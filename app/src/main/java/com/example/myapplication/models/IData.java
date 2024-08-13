@@ -14,5 +14,5 @@ public interface IData {
 
     public List<Product> getAnnouncements();
 
-
+    public List<Category> getCategories();
 }

@@ -57,5 +57,6 @@
     <string name="details">توضیحات</string>
     <string name="comemnts">نظرات</string>
     <string name="related">مرتبط</string>
+    <string name="category_icon">آیکن دسته بندی</string>
 
 </resources>
