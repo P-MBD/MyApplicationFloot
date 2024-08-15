@@ -47,7 +47,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-   // ImageView imageSlider;
+    // ImageView imageSlider;
 
 
     Toolbar toolbar;
@@ -206,5 +206,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-
-

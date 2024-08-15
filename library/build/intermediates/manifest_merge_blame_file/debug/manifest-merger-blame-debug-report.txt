@@ -1,0 +1,11 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.viewpagerindicator"
+4    android:versionCode="65"
+5    android:versionName="2.4.1" >
+6
+7    <uses-sdk android:minSdkVersion="24" />
+7-->E:\AndroidProject1403\library\src\main\AndroidManifest.xml:8:5-43
+7-->E:\AndroidProject1403\library\src\main\AndroidManifest.xml:8:15-40
+8
+9</manifest>
