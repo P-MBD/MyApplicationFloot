@@ -19,7 +19,9 @@ import com.example.myapplication.adapter.AnnouncementsAdapter;
 import com.example.myapplication.adapter.BestProductsAdapter;
 import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
+import com.example.myapplication.models.Product;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,13 +69,17 @@ public class HomeFragment extends Fragment {
         recycler_best_sellers.setLayoutManager(layoutManager);
 
         // Set up the ViewPager2 with the AnnouncementsAdapter
-        loadView();
+        loadView(dataManager.getAnnouncements());
 
         return view;
     }
 
-    private void loadView() {
-        AnnouncementsAdapter announcementsAdapter = new AnnouncementsAdapter(getActivity(), dataManager.getAnnouncements());
+    /**
+     *
+     * @param products is ok
+     */
+    private void loadView(List<Product> products) {
+        AnnouncementsAdapter announcementsAdapter = new AnnouncementsAdapter(getActivity(), products);
         pager.setAdapter(announcementsAdapter);
 
         // Attach the indicator to the ViewPager2

@@ -15,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -39,9 +42,15 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import com.example.myapplication.fragment.CategoriesFragment;
 import com.example.myapplication.fragment.HomeFragment;
 import com.example.myapplication.fragment.UpdatesAppFragment;
+import com.example.myapplication.location.GPSTracker;
 import com.example.myapplication.uiDesign.DialogManager;
+import com.example.myapplication.utils.ApplicationPermission;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigation_slider;
     DrawerLayout drawer;
     BottomNavigationView bottom_menu;
-
+    double lat,lng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +116,71 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+
+        if(Build.VERSION.SDK_INT>=23){
+
+            boolean check= ApplicationPermission.isLocationPermissionGranted(MainActivity.this);
+            if(check==true){
+                try {
+                    location();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        else {
+            try {
+                location();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    private void location() throws Exception {
+        GPSTracker gpsTracker=new GPSTracker(getApplicationContext());
+        if(gpsTracker.canGetLocation()){
+            lat=gpsTracker.getLatitude();
+            lng=gpsTracker.getLongitude();
+            // اضافه کردن Log برای بررسی مختصات جغرافیایی
+            Log.d("Location", "Latitude: " + lat + ", Longitude: " + lng);
+
+            Locale locale=new Locale("fa");
+            Geocoder geocoder=new Geocoder(getApplicationContext(),locale);
+
+            try {
+                List<Address> addressList=geocoder.getFromLocation(lat,lng,1);
+                if (addressList != null && !addressList.isEmpty()) {
+                    Address address = addressList.get(0);
+                    String country = address.getCountryCode();
+
+                    // Log برای نمایش آدرس‌های دریافتی
+                    Log.d("Location", "Address List: " + addressList.toString());
+
+                    // Log برای نمایش نام کشور
+                    Log.d("Location", "Country: " + country);
+                } else {
+                    Log.d("Location", "No address found for the given coordinates.");
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        try {
+            location();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
