@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,9 @@ import com.example.myapplication.adapter.AnnouncementsAdapter;
 import com.example.myapplication.adapter.BestProductsAdapter;
 import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
+import com.example.myapplication.models.IResponse;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.webserviceCaller.VolleyServiceCaller;
 
 import java.util.List;
 import java.util.Timer;
@@ -42,7 +45,7 @@ public class HomeFragment extends Fragment {
 
     int Num = 0;
     int currentPage = 0;
-
+    VolleyServiceCaller volleyServiceCaller;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,7 +64,7 @@ public class HomeFragment extends Fragment {
         // Set up the GridView with best products
         BestProductsAdapter bestProductsAdapter = new BestProductsAdapter(getActivity(), dataManager.getBestProducts());
         grid_best_products.setAdapter(bestProductsAdapter);
-
+        volleyServiceCaller = new VolleyServiceCaller(getActivity());
         // Set up the RecyclerView for best sellers
         ProductAdapter productAdapter = new ProductAdapter(getActivity(), dataManager.getNewProducts());
         recycler_best_sellers.setAdapter(productAdapter);
@@ -70,7 +73,7 @@ public class HomeFragment extends Fragment {
 
         // Set up the ViewPager2 with the AnnouncementsAdapter
         loadView(dataManager.getAnnouncements());
-
+        getBestProducts();
         return view;
     }
 
@@ -123,4 +126,22 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-}
+    private void getBestProducts(){
+
+        volleyServiceCaller.getBestProducts(new IResponse() {
+            @Override
+            public void onResponse(String message) {
+                Log.e("","");
+
+            }
+
+            @Override
+            public void onFail(String errorMessage) {
+                Log.e("","");
+
+            }
+        });
+
+
+    }
+    }

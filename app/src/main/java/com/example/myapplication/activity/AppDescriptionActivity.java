@@ -1,6 +1,7 @@
 package com.example.myapplication.activity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class AppDescriptionActivity extends AppCompatActivity {
     RatingBar rate_app;
     ViewPager pager;
     TabLayout tabs;
+    Button btn_map;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
