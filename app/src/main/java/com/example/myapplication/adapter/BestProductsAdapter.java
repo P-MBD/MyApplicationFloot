@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.webserviceCaller.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,13 +55,7 @@ public class BestProductsAdapter extends BaseAdapter {
         // txt_title.setText(productList.get(position).getTitle());
         txt_title.setText(product.getTitle());
       //  Picasso.with(context).setLoggingEnabled(true);
-
-        Picasso.with(context)
-               .load(product.getIcon()) //Load the image
-//               .placeholder(R.drawable.ic_launcher_background) //Image resource that act as placeholder
-//              .error(R.drawable.ic_launcher_foreground) //Image resource for error
-               .into(img_app); // View where image is loaded.
-
+        Picasso.with(context).load(Constants.BASE_URL+"images/"+product.getIcon()).into(img_app);
         return view;
     }
 }

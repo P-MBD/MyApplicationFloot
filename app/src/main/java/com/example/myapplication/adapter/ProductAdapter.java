@@ -16,6 +16,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.activity.AppDescriptionActivity;
 import com.example.myapplication.databinding.ProductRowBinding;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.webserviceCaller.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.binding.txtTitle.setTypeface(typeface);
 
         holder.binding.txtTitle.setText(product.getTitle());
-        Picasso.with(context).load(product.getIcon()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder.binding.imgApp);
+        Picasso.with(context).load(Constants.BASE_URL+"images/"+product.getIcon()).error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(holder.binding.imgApp);
         holder.binding.cardDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

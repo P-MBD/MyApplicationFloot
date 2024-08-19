@@ -54,35 +54,46 @@
                 </RelativeLayout>
 
 
-                <LinearLayout
-                    android:orientation="horizontal"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="120dp">
 
                     <GridView
-                        android:numColumns="3"
-                        android:id="@+id/grid_best_product"
+                        android:id="@+id/grid_best_products"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:numColumns="3"></GridView>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_best"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
 
 
-                </LinearLayout>
+                </RelativeLayout>
 
                 <com.example.myapplication.customView.PersianTextView
                     style="@style/text_style"
                     android:text="@string/best_sellers"/>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_best_sellers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </androidx.recyclerview.widget.RecyclerView>
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:layout_height="wrap_content">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_best_sellers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progressBar_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+                </RelativeLayout>
 
                 <com.example.myapplication.customView.PersianTextView
                     style="@style/text_style"
