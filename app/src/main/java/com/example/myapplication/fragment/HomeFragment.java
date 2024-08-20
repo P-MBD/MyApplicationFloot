@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -27,6 +28,7 @@ import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
 import com.example.myapplication.models.IResponse;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.models.User;
 import com.example.myapplication.utils.DataParser;
 import com.example.myapplication.webserviceCaller.Constants;
 import com.example.myapplication.webserviceCaller.VolleyServiceCaller;
@@ -76,6 +78,7 @@ public class HomeFragment extends Fragment {
         loadView(dataManager.getAnnouncements());
         getBestProducts();
         newApps();
+        registerUser();
         return view;
     }
 
@@ -193,6 +196,32 @@ public class HomeFragment extends Fragment {
 
 
     }
+
+    private void registerUser() {
+        User user = new User();
+        user.setUserName("mohammadi");
+        user.setPassword("123");
+
+        try {
+            volleyServiceCaller.register(user, new IResponse() {
+                @Override
+                public void onResponse(String message) {
+                    Log.e("RegisterUser", "Registration successful: " + message);
+                    Toast.makeText(getContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFail(String errorMessage) {
+                    Log.e("RegisterUser", "Registration failed: " + errorMessage);
+                    Toast.makeText(getContext(), "Registration failed: " + errorMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+        } catch (Exception e) {
+            Log.e("RegisterUser", "Exception during registration: " + e.getMessage());
+            Toast.makeText(getContext(), "An error occurred during registration: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
     }
 
 

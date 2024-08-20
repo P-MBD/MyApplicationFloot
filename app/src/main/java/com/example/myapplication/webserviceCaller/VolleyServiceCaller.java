@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.myapplication.models.IRequests;
 import com.example.myapplication.models.IResponse;
+import com.example.myapplication.models.User;
 
 
 import org.json.JSONArray;
@@ -91,6 +92,45 @@ public class VolleyServiceCaller implements IRequests {
     public void getCategories(IResponse response) {
 
     }
+
+    @Override
+    public void register(final User user, final IResponse iResponse)  {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.REGISTER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s)  {
+                        try {
+                            iResponse.onResponse(s);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        iResponse.onFail(volleyError.getMessage());
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return super.getHeaders();
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("username", user.getUserName());
+                params.put("password", user.getPassword());
+                return params;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+    }
+
+
 
 
 }
