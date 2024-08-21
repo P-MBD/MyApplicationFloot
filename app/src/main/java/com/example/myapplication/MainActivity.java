@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 
 import com.example.myapplication.activity.ContactActivity;
+import com.example.myapplication.activity.SmsActivity;
 import com.example.myapplication.adapter.BestProductsAdapter;
 import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.dataProvider.DataManager;
@@ -255,15 +256,11 @@ public class MainActivity extends AppCompatActivity {
             });
 
             alert.show();
-
+        } else if (id == R.id.item_sms) {
+            // باز کردن فعالیت ارسال پیامک
+            Intent intent = new Intent(MainActivity.this, SmsActivity.class);
+            startActivity(intent);
         }
-//        else if(R.id.item_contact){
-//            Intent intent_ahmadi = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:0912236458"));
-//            startActivity(intent_ahmadi);
-//        }else if(R.id.item_sms){
-//            Intent intent2 = new Intent(Intent.ACTION_VIEW , Uri.parse("sms:0912236458"));
-//            startActivity(intent2);
-//        }
 
         return super.onOptionsItemSelected(item);
     }
